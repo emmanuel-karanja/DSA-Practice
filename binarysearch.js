@@ -8,7 +8,7 @@ function binarySearch(arr, target) {
       const mid = Math.floor((left + right) / 2);
   
       if (arr[mid] === target) {
-        return mid; // Target found
+        return mid; // Target found,we return its index in the array
       } else if (arr[mid] < target) {
         left = mid + 1; // Search right half
       } else {

@@ -5,11 +5,6 @@ function threeSumClosest(nums, target) {
     let closestDiff = Infinity;
   
     let right = nums.length - 1;//start at the very end
-  
-    //check if we have any right values greater than the target and reduce the size of the array
-    while(arr[right]> target && right >=0){
-        right--;
-    }
 
     //we want it to point right-1,  use right-1
     for (let i = 0; i < nums.length - 2; i++) {
@@ -38,3 +33,8 @@ function threeSumClosest(nums, target) {
     return closestSum;
   }
   
+  // Driver Code
+const nums = [-1, 2, 1, -4];
+const target = 1;
+const closest = threeSumClosest(nums, target);
+console.log("Closest sum to target:", closest); // Output: 2

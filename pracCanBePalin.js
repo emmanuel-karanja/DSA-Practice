@@ -17,7 +17,8 @@ function canBePalindrome(s){
     let right=s.length-1;
     while(left<right){
         if(s[left]!==s[right]){
-            //we have a possible hold out
+            //we have a possible hold out, we remove the current character on the left or one on the right
+            //and test if the rest is a palindrome
             return isPalindrome(s,left+1,right) || isPalindrome(s,left,right-1);
         }
         left++;

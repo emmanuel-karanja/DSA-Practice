@@ -1,5 +1,6 @@
 function verifyWordOrder(word1, word2, order) {
     const minLength = Math.min(word1.length, word2.length);
+  
     for (let i = 0; i < minLength; i++) {
       const firstChar = order.indexOf(word1[i]);
       const secondChar = order.indexOf(word2[i]);
@@ -27,6 +28,9 @@ function verifyWordOrder(word1, word2, order) {
   
   // Driver Code
   const words = ["wrt", "wrf", "er", "ett", "rftt"];
+
+
+  console.log(verifyDictionary("wrt","wrf","wertf"))
   const order = "wertf";
   
   const isValid = verifyDictionary(words, order);

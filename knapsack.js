@@ -16,20 +16,22 @@ function knapsackRecursive(W, wt, val, n) {
 
   //Space complexity O(n) due to the recursive call stack and O(2^n) time complexity
 
+  //The table for this is for item index and the remaining weights
   function knapsackDP(W, wt, val, n) {
-    const K = Array(n + 1).fill(null).map(() => Array(W + 1).fill(0));
+    const DP= Array(n + 1).fill(null).map(() => Array(W + 1).fill(0));
   
     for (let i = 0; i <= n; i++) {
       for (let w = 0; w <= W; w++) {
+        //base case
         if (i === 0 || w === 0) {
-          K[i][w] = 0;
+          DP[i][w] = 0;
         } else if (wt[i - 1] > w) {
-            K[i][w] = K[i - 1][w];//skip case
+            DP[i][w] = K[i - 1][w];//skip case
         } else {
         
-          K[i][w] = Math.max(
-            val[i - 1] + K[i - 1][w - wt[i - 1]],//yield and lower 
-            K[i - 1][w]
+          DP[i][w] = Math.max(
+            val[i - 1] + DP[i - 1][w - wt[i - 1]],//yield and lower 
+            DP[i - 1][w]
           );
         }
       }

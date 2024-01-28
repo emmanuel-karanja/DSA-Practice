@@ -5,20 +5,20 @@ class HashTable {
       this.size = 0;
     }
   
-    _hash(key) {
-      // Simple hashing function for demonstration
-      const hashed = key.toString().length % this.capacity;
-      return hashed;
-    }
+    // _hash(key) {
+    //   // Simple hashing function for demonstration
+    //   const hashed = key.toString().length % this.capacity;
+    //   return hashed;
+    // }
 
-    /** _hash(key) {
+    _hash(key,size) {
     // Same hash function for simplicity
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
       hash += key.charCodeAt(i);
     }
-    return hash % this.capacity;
-  } */
+    return hash % size;
+  } 
   
     _resize() {
         const newSize = this.capacity * 2;
@@ -30,7 +30,7 @@ class HashTable {
             for (let [key,value] of chain) {
                 //rehash
               const newIndex = this._hash(key, newSize);
-              if (!newTable[newIndex]) {
+              if (!newTable[newIndex]) {//the current chain doesn't exist
                 newTable[newIndex] = [];
               }
               newTable[newIndex].push([key,value]);
@@ -44,7 +44,7 @@ class HashTable {
       
   
     set(key, value) {
-      const index = this._hash(key);
+      const index = this._hash(key,this.capacity);
       let chain = this.table[index];
   
       //we have a chain at that index, we try to find if the key exists and update the value
@@ -74,7 +74,7 @@ class HashTable {
     }
   
     get(key) {
-      const index = this._hash(key);
+      const index = this._hash(key,this.capacity);
       const chain = this.table[index];
   
       if (chain) {

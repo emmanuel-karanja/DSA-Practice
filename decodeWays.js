@@ -27,8 +27,7 @@ function numDecodingsRecursion(s) {
     // Decode two digits if valid
     if (s.length >= 2 && parseInt(s.slice(0, 2)) >= 10 && parseInt(s.slice(0, 2)) <= 26) {
         //you are basically slicing to reduce the string
-        let subString=s.slice(2)
-      ways += numDecodingsRecursion(subString);
+      ways += numDecodingsRecursion(s.slice(2));
     }
   
     return ways;
@@ -73,7 +72,7 @@ function numDecodingsRecursion(s) {
         //find ways for 1 digit
         const oneDigit = parseInt(s[i - 1]);
         if (oneDigit !== 0) {
-          dp[i] += dp[i - 1]; // Add ways from decoding one digit
+          dp[i] =dp[i]+dp[i - 1]; // Add ways from decoding one digit
         }
 
         //find ways for 2 digits

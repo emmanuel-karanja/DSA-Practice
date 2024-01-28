@@ -14,7 +14,7 @@ function findKthLargest(arr, k) {
     const pivotIndex = getPivotIndex(arr, start, end);
   
     if (kth === pivotIndex) 
-       return arr[kth]; // Found the kth smallest
+       return arr[kth]; // Found the kth largest
     else if (kth < pivotIndex) 
        return quickSelect(arr, start, pivotIndex - 1, kth);
     else ///kth is greater

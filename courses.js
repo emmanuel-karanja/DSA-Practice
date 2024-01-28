@@ -22,10 +22,9 @@ function topologicalSort(courses, prerequisites) {
       if (visited.has(course)) return; //we've already checked this course
 
       visiting.add(course);
-      console.log("WE ARE AT THE TOP: current visiting:",visiting,"current visited:",visited,"sorted:",sorted)
-  
-      //explore all its prerequisites
-      for (const prereq of prerequisites.get(course) || []) {
+
+      //explore all its prerequisites for this course
+      for (const prereq of prerequisites[course] || []) {
         dfs(prereq);
       }
   
@@ -33,13 +32,11 @@ function topologicalSort(courses, prerequisites) {
       visited.add(course);
       sorted.unshift(course); // Add to the beginning for topological order
       visiting.delete(course);//don't forget to unvisit
-      console.log("WE ARE AT THE BOTTOM: current visiting:",visiting,"current visited:",visited,"sorted:",sorted)
-      //why do we have visiting? Because we'll do a DFS on its prerequisites and we want to know which
-      //course we are currently looking at.
+     
     }
   
     for (const course of courses) {
-      dfs(course);
+        dfs(course);
     }
   
     return sorted;

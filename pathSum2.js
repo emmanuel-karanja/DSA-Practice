@@ -20,10 +20,8 @@ function pathSum(root, targetSum) {
       currentPath.push(node.val);
       remainingSum -= node.val;
   
-      //if it's a leaf node and it satisfies the condition
+      //is a leaf node and remainingSum===0
       if (!node.left && !node.right && remainingSum === 0) {
-        //Create a copy to avoid modifying original path
-        //this is why my previous impl of permutation was failing, I was not making a copy
         paths.push([...currentPath]);
       }
   
@@ -40,8 +38,11 @@ function pathSum(root, targetSum) {
   }
   
   // Example usage
-  const root = new TreeNode(5, new TreeNode(4, null, new TreeNode(11, left = new TreeNode(7), right = new TreeNode(2))), new TreeNode(8, new TreeNode(13), new TreeNode(4)));
-  const targetSum = 22;
+  const root = new TreeNode(5)
+  const left=new TreeNode(7);
+  const right=new TreeNode(9)
+  root.left=left;root.right=right;
+  const targetSum = 12;
   
   const paths = pathSum(root, targetSum);
   console.log(paths);

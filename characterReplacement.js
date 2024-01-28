@@ -23,7 +23,8 @@ function characterReplacement(s, k) {
     for (let right = 0; right < s.length; right++) {
       const char = s[right];
       charCount[char] = (charCount[char] || 0) + 1;
-      maxFreq = Math.max(maxFreq, charCount[char]);
+      let currentCharFreq=charCount[char];
+      maxFreq = Math.max(maxFreq, currentCharFreq);
       
     //how many characters we can actually change given then we don't want to change the one
     //with maxFreq

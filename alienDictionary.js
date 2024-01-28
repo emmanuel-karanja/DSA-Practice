@@ -7,7 +7,8 @@ function buildGraph(words) {
       const word1 = words[i];
       const word2 = words[i + 1];
   
-      for (let j = 0; j < Math.min(word1.length, word2.length); j++) {
+      const length=Math.min(word1.length,word2.length)
+      for (let j = 0; j < length; j++) {
         //get a character from each word
         const char1 = word1[j];
         const char2 = word2[j];

@@ -10,7 +10,7 @@ function longestCommonSubsequenceRecursive(string1, string2, string1Length, stri
         string2Length - 1
       );
     } else {
-      return Math.max(
+      return Math.max(//we remove one character from each one
         longestCommonSubsequenceRecursive(string1, string2, string1Length, string2Length - 1),//lesses
         //string1 and converge
         longestCommonSubsequenceRecursive(string1, string2, string1Length - 1, string2Length)//converge on string2
@@ -41,6 +41,6 @@ function longestCommonSubsequenceRecursive(string1, string2, string1Length, stri
       }
     }
   
-    return longestCommonSubsequenceLengthTable[string1.length][string2.length];
+    return LCSTable[string1.length][string2.length];
   }
   
